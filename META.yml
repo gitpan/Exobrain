@@ -1,0 +1,66 @@
+---
+abstract: 'Core Exobrain accessor class'
+author:
+  - 'Paul Fenwick <pjf@cpan.org>'
+build_requires:
+  Test::More: 0
+  Test::Most: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.30
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 5.013, CPAN::Meta::Converter version 2.120921'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Exobrain
+requires:
+  AnyEvent: 0
+  AnyEvent::XMPP::Client: 0
+  CHI: 0
+  Carp: 0
+  Config::Tiny: 0
+  Dancer: 0
+  Data::Dumper: 0
+  Data::Structure::Util: 0
+  Date::Manip::Date: 0
+  Devel::Pragma: 0.60
+  Facebook::Graph: 0
+  Getopt::Std: 0
+  IO::Handle: 0
+  IO::Socket::SSL: 0
+  JSON::Any: 0
+  Method::Signatures: 0
+  Moose: 0
+  Moose::Role: 0
+  Moose::Util::TypeConstraints: 0
+  MooseX::Types: 0
+  MooseX::Types::Moose: 0
+  Net::IMAP::Client: 0
+  Net::Twitter: 0
+  POSIX: 0
+  Socket: 0
+  Storable: 0
+  Term::ReadKey: 0
+  Try::Tiny: 0
+  Ubic: 0
+  Ubic::Multiservice::Simple: 0
+  Ubic::Service::SimpleDaemon: 0
+  WWW::Mechanize: 0
+  WebService::Beeminder: 0
+  WebService::HabitRPG: 0
+  WebService::Idonethis: 0.22
+  WebService::Pushover: 0
+  WebService::RTMAgent: 0.600
+  ZMQ::Constants: 0
+  ZMQ::LibZMQ2: 0
+  autodie: 0
+  constant: 0
+  parent: 0
+  perl: v5.10.0
+  strict: 0
+  utf8::all: 0
+  warnings: 0
+resources:
+  repository: git://github.com/pjf/exobrain
+version: 0.05

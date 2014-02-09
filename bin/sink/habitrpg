@@ -1,0 +1,115 @@
+#!/usr/bin/perl -w
+use 5.010;
+use strict;
+use warnings;
+use autodie;
+
+use Exobrain;
+use WebService::HabitRPG;
+
+# PODNAME: habitrpg
+# ABSTRACT: Send HabitRPG intents to HabitRPG
+
+use constant DEBUG => 0;
+
+my $exobrain = Exobrain->new;
+
+my $config = Exobrain::Config->new;
+
+my $hrpg = WebService::HabitRPG->new(
+    api_token => $exobrain->config->{HabitRPG}{api_token},
+    user_id   => $exobrain->config->{HabitRPG}{user_id},
+);
+
+$exobrain->watch_loop(
+    class => 'Intent::HabitRPG',
+    then => sub {
+
+        my $event = shift;
+
+        my $task      = $event->data->{task};
+        my $direction = $event->data->{direction};
+        my $public    = $event->data->{public} || 0;
+
+        my $stats = $hrpg->user->{stats};
+
+        my $result;
+
+        if ($task and $direction) {
+            debug("Moving $task $direction");
+            $result = $hrpg->updown($task, $direction);
+            debug("Completed move");
+        }
+
+        if ($public) {
+            my $name = $hrpg->get_task($task)->{text};
+
+            my $msg;
+
+            if ($direction eq "up") {
+                $msg = sprintf(
+                    "Congrats! You gained %+.2f XP and %+.2f GP for completing: $name",
+                    $result->{exp} - $stats->{exp},
+                    $result->{gp}  - $stats->{gp},
+                );
+            }
+            else {
+                # Must be down
+                $msg = sprintf(
+                    "Oh no! You lost %+.2f HP for: $name",
+                    $result->{hp} - $stats->{hp},
+                )
+            }
+
+            debug("Sending: $msg");
+            respond($event->exobrain, $config->{Identity}, $msg);
+        }
+    }
+);
+
+sub respond {
+    my ($exobrain, $ident, $text) = @_;
+
+    my $user = $ident->{Twitter};
+    my $content = "@".$user.": $text";
+
+    say "Responding: $content" if DEBUG;
+
+    my $time = time();
+
+    $exobrain->intent('Tweet',
+        tweet => $content,
+    )->send_msg;
+
+    return;
+}
+
+sub debug {
+    say "@_" if DEBUG;
+    return;
+}
+
+__END__
+
+=pod
+
+=head1 NAME
+
+habitrpg - Send HabitRPG intents to HabitRPG
+
+=head1 VERSION
+
+version 0.05
+
+=head1 AUTHOR
+
+Paul Fenwick <pjf@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2013 by Paul Fenwick.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

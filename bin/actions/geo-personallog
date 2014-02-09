@@ -1,0 +1,48 @@
+#!/usr/bin/perl -w
+use 5.010;
+use strict;
+use warnings;
+use autodie;
+
+# PODNAME: geo-personallog
+# ABSTRACT: Log our own check-ins to a personal log (such as idonethis).
+
+use Exobrain;
+
+my $exobrain = Exobrain->new;
+
+$exobrain->watch_loop(
+    class  => 'Measurement::Geo',
+    filter => sub { $_->is_me },
+    then   => sub {
+        my $event = shift;
+        $exobrain->intent("PersonalLog",
+            message => $event->summary
+        )->send_msg;
+    },
+);
+
+__END__
+
+=pod
+
+=head1 NAME
+
+geo-personallog - Log our own check-ins to a personal log (such as idonethis).
+
+=head1 VERSION
+
+version 0.05
+
+=head1 AUTHOR
+
+Paul Fenwick <pjf@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2013 by Paul Fenwick.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

@@ -1,0 +1,95 @@
+#!/usr/bin/perl
+
+use v5.10.0;
+use strict;
+use warnings;
+
+# PODNAME: exobrain
+# ABSTRACT: UBIC service file for exobrain
+
+
+use Ubic::Multiservice::Simple;
+use Ubic::Service::SimpleDaemon;
+
+my $LOG_HOME = "$ENV{HOME}/ubic/log/exobrain";
+
+sub daemon {
+    my ($bin) = @_;
+
+    return Ubic::Service::SimpleDaemon->new(
+        bin      => $bin,
+        stdout   => "$LOG_HOME/$bin.stdout.log",
+        stderr   => "$LOG_HOME/$bin.stderr.log",
+        ubic_log => "$LOG_HOME/$bin.ubic.log",
+    );
+}
+
+Ubic::Multiservice::Simple->new({
+
+    source => Ubic::Multiservice::Simple->new({
+        twitter  => daemon("twitter"),
+        facebook => daemon("facebook"),
+        beeminder => daemon("beeminder-callback"),
+        foursquare => daemon("foursquare"),
+    }),
+
+    action => Ubic::Multiservice::Simple->new({
+        'tweet-ping' => daemon('tweet-ping'),
+        'bee-habit'  => daemon('bee-habit'),
+        'bee-inbox'  => daemon('bee-inbox'),
+        'rtm-adder'  => daemon('rtm-adder'),
+        'sentbox-reward'  => daemon('sentbox-reward'),
+        'bee-notify' => daemon('bee-notify'),
+        'geo-notify' => daemon('geo-notify'),
+        'tweet-notify' => daemon('tweet-notify'),
+        'geo-personallog' => daemon('geo-personallog'),
+    }),
+
+    sink => Ubic::Multiservice::Simple->new({
+        twitter  => daemon("twitter-send"),
+        habitrpg => daemon('habitrpg'),
+        beeminder => daemon('beeminder'),
+        idonethis => daemon('idone-send'),
+        pushover  => daemon('pushover'),
+    }),
+
+    core => Ubic::Multiservice::Simple->new({
+        router => daemon("router"),
+    }),
+});
+
+__END__
+
+=pod
+
+=head1 NAME
+
+exobrain - UBIC service file for exobrain
+
+=head1 VERSION
+
+version 0.05
+
+=head1 SYNOPSIS
+
+    $ cp `which exobrain` ~/ubic/service
+    $ ubic start exobrain
+
+=head1 DESCRIPTION
+
+This is a service file for Ubic which allows for the
+control of exobrain services. It must be placed in
+your F<~/ubic/service> directory to be operational.
+
+=head1 AUTHOR
+
+Paul Fenwick <pjf@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2013 by Paul Fenwick.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
