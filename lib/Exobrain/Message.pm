@@ -8,7 +8,7 @@ use Moose::Role;
 use Moose::Util::TypeConstraints;
 use Carp;
 use ZMQ::Constants qw(ZMQ_SNDMORE);
-use ZMQ::LibZMQ2;
+use ZMQ;
 use JSON::Any;
 use Data::Dumper;
 
@@ -105,17 +105,9 @@ method send_msg($socket?) {
         }
     }
 
-    # For some reason multipart sends don't work right now,
-    # $socket->ZMQ::Socket::send_multipart( $self->frames );
-
     my @frames = $self->_frames;
-    my $last   = pop(@frames);
 
-    foreach my $frame ( @frames) {
-        zmq_send($socket, $frame, ZMQ_SNDMORE);
-    }
-
-    zmq_send($socket,$last);
+    $socket->send_multipart(\@frames);
 
     return;
 }
@@ -169,7 +161,7 @@ Exobrain::Message
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 DESCRIPTION
 
@@ -220,7 +212,7 @@ Paul Fenwick <pjf@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Paul Fenwick.
+This software is copyright (c) 2014 by Paul Fenwick.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

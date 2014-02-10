@@ -28,8 +28,6 @@
       },
       "runtime" : {
          "requires" : {
-            "AnyEvent" : "0",
-            "AnyEvent::XMPP::Client" : "0",
             "CHI" : "0",
             "Carp" : "0",
             "Config::Tiny" : "0",
@@ -39,8 +37,8 @@
             "Date::Manip::Date" : "0",
             "Devel::Pragma" : "0.60",
             "Facebook::Graph" : "0",
+            "FindBin" : "0",
             "Getopt::Std" : "0",
-            "IO::Handle" : "0",
             "IO::Socket::SSL" : "0",
             "JSON::Any" : "0",
             "Method::Signatures" : "0",
@@ -65,8 +63,8 @@
             "WebService::Idonethis" : "0.22",
             "WebService::Pushover" : "0",
             "WebService::RTMAgent" : "0.600",
+            "ZMQ" : "0",
             "ZMQ::Constants" : "0",
-            "ZMQ::LibZMQ2" : "0",
             "autodie" : "0",
             "constant" : "0",
             "parent" : "0",
@@ -91,6 +89,6 @@
          "web" : "https://github.com/pjf/exobrain"
       }
    },
-   "version" : "0.05"
+   "version" : "0.06"
 }
 

@@ -18,7 +18,6 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "Exobrain",
   "EXE_FILES" => [
-    "bin/xmpp",
     "bin/exobrain",
     "bin/router",
     "bin/debug/notify",
@@ -49,8 +48,6 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Exobrain",
   "PREREQ_PM" => {
-    "AnyEvent" => 0,
-    "AnyEvent::XMPP::Client" => 0,
     "CHI" => 0,
     "Carp" => 0,
     "Config::Tiny" => 0,
@@ -60,8 +57,8 @@ my %WriteMakefileArgs = (
     "Date::Manip::Date" => 0,
     "Devel::Pragma" => "0.60",
     "Facebook::Graph" => 0,
+    "FindBin" => 0,
     "Getopt::Std" => 0,
-    "IO::Handle" => 0,
     "IO::Socket::SSL" => 0,
     "JSON::Any" => 0,
     "Method::Signatures" => 0,
@@ -86,8 +83,8 @@ my %WriteMakefileArgs = (
     "WebService::Idonethis" => "0.22",
     "WebService::Pushover" => 0,
     "WebService::RTMAgent" => "0.600",
+    "ZMQ" => 0,
     "ZMQ::Constants" => 0,
-    "ZMQ::LibZMQ2" => 0,
     "autodie" => 0,
     "constant" => 0,
     "parent" => 0,
@@ -99,7 +96,7 @@ my %WriteMakefileArgs = (
     "Test::More" => 0,
     "Test::Most" => 0
   },
-  "VERSION" => "0.05",
+  "VERSION" => "0.06",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -107,8 +104,6 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "AnyEvent" => 0,
-  "AnyEvent::XMPP::Client" => 0,
   "CHI" => 0,
   "Carp" => 0,
   "Config::Tiny" => 0,
@@ -118,8 +113,8 @@ my %FallbackPrereqs = (
   "Date::Manip::Date" => 0,
   "Devel::Pragma" => "0.60",
   "Facebook::Graph" => 0,
+  "FindBin" => 0,
   "Getopt::Std" => 0,
-  "IO::Handle" => 0,
   "IO::Socket::SSL" => 0,
   "JSON::Any" => 0,
   "Method::Signatures" => 0,
@@ -146,8 +141,8 @@ my %FallbackPrereqs = (
   "WebService::Idonethis" => "0.22",
   "WebService::Pushover" => 0,
   "WebService::RTMAgent" => "0.600",
+  "ZMQ" => 0,
   "ZMQ::Constants" => 0,
-  "ZMQ::LibZMQ2" => 0,
   "autodie" => 0,
   "constant" => 0,
   "parent" => 0,

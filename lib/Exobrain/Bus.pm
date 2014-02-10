@@ -3,7 +3,7 @@ use v5.10.0;
 use strict;
 use warnings;
 
-use ZMQ::LibZMQ2;
+use ZMQ;
 use ZMQ::Constants qw(ZMQ_SUB ZMQ_PUB ZMQ_SUBSCRIBE ZMQ_RCVMORE);
 
 use Moose;
@@ -12,7 +12,7 @@ use Method::Signatures;
 use Exobrain::Router;
 use Exobrain::Message::Raw;
 
-my $context  = zmq_init();                  # Context is always shared.
+my $context  = ZMQ::Context->new;           # Context is always shared.
 my $endpoint = 'tcp://localhost:3568/';     # TODO: From config file?
 my $router   = Exobrain::Router->new;
 
@@ -26,40 +26,30 @@ has exobrain  => ( is => 'ro', isa => 'Exobrain' );
 sub BUILD {
     my ($self) = @_;
 
-    given ($self->type) {
+    my $type = $self->type;
 
-        when('SUB') {
-            my $socket = zmq_socket($self->context, ZMQ_SUB);
-            zmq_connect($socket, $self->router->subscriber);
-            zmq_setsockopt($socket, ZMQ_SUBSCRIBE, $self->subscribe);
-            $self->_socket($socket);
-        }
-
-        when('PUB') {
-            my $socket = zmq_socket($self->context, ZMQ_PUB);
-            zmq_connect($socket, $self->router->publisher);
-            $self->_socket($socket);
-        }
-
-        default {
-            die "Internal error: Can't make a $_ socket.";
-        }
+    if ($type eq 'SUB') {
+        my $socket = $context->socket(ZMQ_SUB);
+        $socket->connect($self->router->subscriber);
+        $socket->setsockopt(ZMQ_SUBSCRIBE, $self->subscribe);
+        $self->_socket($socket);
+    }
+    elsif ($type eq 'PUB') {
+        my $socket = $context->socket(ZMQ_PUB);
+        $socket->connect($self->router->publisher);
+        $self->_socket($socket);
+    }
+    else {
+        die "Internal error: Can't make a $type socket.";
     }
 
     return;
 }
 
 method get() {
-    my @frames;
-    my $more = 1;
-    while ($more) {
-        push(@frames, zmq_msg_data( zmq_recv( $self->_socket ) ) );
-
-        # Check to see if there's more...
-        $more = zmq_getsockopt($self->_socket, ZMQ_RCVMORE);
-    }
-
-    my $message = Exobrain::Message::Raw->new(\@frames);
+    my $message = Exobrain::Message::Raw->new( [
+        map { $_->data } $self->_socket->recv_multipart
+    ] );
 
     # If I have an exobrain object, attach that to the message.
     if ($self->exobrain) {
@@ -69,10 +59,10 @@ method get() {
     return $message;
 }
 
-# This should probably be retired. Messages come with their own
+# TODO: This should be retired. Messages come with their own
 # send functionality.
 method send($msg) {
-    zmq_send($self->_socket, $msg);
+    $self->_socket->send($msg);
 }
 
 method send_msg(%opts) {
@@ -94,7 +84,7 @@ Exobrain::Bus
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =for Pod::Coverage BUILD ZMQ_PUB ZMQ_SUB ZMQ_SUBSCRIBE
 
@@ -104,7 +94,7 @@ Paul Fenwick <pjf@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Paul Fenwick.
+This software is copyright (c) 2014 by Paul Fenwick.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/pjf/exobrain.png?branch=master)](https://travis-ci.org/pjf/exobrain)
+
 # What is this?
 
 Exobrain is a collection of agents which collect, classify, and act
@@ -11,6 +13,10 @@ Examples of things that exobrain can currently do:
 * Update beeminder by checking your inbox sizes using IMAP
 * Reward you for responding to email
 * Automatically log life events to idonethis
+
+You can find pre-built actions in the
+[`bin/actions`](https://github.com/pjf/exobrain/tree/master/bin/actions)
+directory.
 
 Exobrain is designed to make it very easy to write and trigger
 events using standard interfaces. 
@@ -42,22 +48,37 @@ all tweets directed at him to said watch:
 
 **Step 1: Install exobrain**
 
+The following works for a fresh install of Ubuntu 13.10.
+
 Firstly, make sure you've got all the dependencies:
 
-    sudo apt-get install libzmq-dev libexpat-dev libnet-ssleay-perl \
-        libnet-libidn-perl libcrypt-ssleay-perl cpanminus
+    $ sudo apt-get install libzmq-dev libexpat-dev libnet-ssleay-perl \
+        libnet-libidn-perl libcrypt-ssleay-perl cpanminus make \
+        liblocal-lib-perl libmethod-signatures-perl
+
+Configure `local::lib` if you haven't already done so:
+
+    $ perl -Mlocal::lib >> ~/.bashrc
+    $ eval $(perl -Mlocal::lib)
 
 If installing from git, you can then use:
 
-    dzil listdeps | cpanm
-    dzil install
+    $ dzil authordeps | cpanm
+    $ dzil listdeps   | cpanm
+    $ dzil install
 
-If installing from CPAN:
+If installing from CPAN, it's just:
 
-    cpanm exobrain
+    $ cpanm Exobrain
 
-You now have exobrain installed! However to use it properly, you'll
-want to manage it with `ubic`.
+Note that Exobrain has *many* dependencies. If you're feeling hungry,
+this would be a good time to go out for a meal or find a snack. You
+can also use `cpanm --notest` instead of `cpanm` in all the lines above,
+which will get things installed sooner by not rigorously testing
+Exobrain and every one of its dependencies.
+
+When you return from your meal, you should find that you have exobrain
+installed!  However to use it properly, you'll want to manage it with `ubic`.
 
 **Step 2: Configure ubic**
 
@@ -116,9 +137,16 @@ components, and also the easiest to write.
 
 Heaps. Report and/or fix them at https://github.com/pjf/exobrain/issues/
 
-# SUPPORT
+# SUPPORTING EXOBRAIN DEVELOPMENT
 
 If you like my work, you can [tip me on gittip](https://gittip.com/pjf).
+
+If you wish to see Exobrain features implemented more quickly, you
+can [place bounties on Bountysource](https://www.bountysource.com/trackers/347315-exobrain).
+
+All code contributions, tests, bug reports, feature ideas, documentation,
+and anything else are extremely welcome! Exobrain is free and open
+source software, please use it to make the world a better place.
 
 # LICENSE
 
