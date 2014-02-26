@@ -38,7 +38,7 @@ post qr{.*} => sub {
 
     try {
         debug("About to send packet on exobrain bus...");
-        $exobrain->measure( 'Beeminder', params(), raw => { params() } )->send_msg;
+        $exobrain->measure( 'Beeminder', params(), raw => { params() } );
         debug("Packet sent on exobrain bus");
     }
     catch {
@@ -62,7 +62,7 @@ beeminder-callback - Turn Beeminder callbacks into exobrain measurements
 
 =head1 VERSION
 
-version 0.06
+version 1.00
 
 =begin example
 

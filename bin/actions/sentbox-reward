@@ -17,6 +17,8 @@ use Data::Dumper;
 
 use constant DEBUG => 1;
 
+# TODO: Upgrade this to use watch_loops
+
 my $exobrain = Exobrain->new;
 
 my $bus       = $exobrain->sub;
@@ -72,7 +74,7 @@ sentbox-reward - Reward users on HabitRPG for sending email.
 
 =head1 VERSION
 
-version 0.06
+version 1.00
 
 =head1 AUTHOR
 

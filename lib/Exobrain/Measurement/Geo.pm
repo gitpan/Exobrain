@@ -45,6 +45,8 @@ method _build_summary() {
     );
 }
 
+no warnings qw(redefine);
+
 method BUILD(...) {
 
     # Fill our POI source if required
@@ -67,7 +69,7 @@ Exobrain::Measurement::Geo - Geo measurement packet
 
 =head1 VERSION
 
-version 0.06
+version 1.00
 
 =head1 DESCRIPTION
 

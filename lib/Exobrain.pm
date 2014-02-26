@@ -81,22 +81,31 @@ method watch_loop(
     $self->_load_component($class);
 
     while (my $event = $self->sub->get) {
-        next unless $event->namespace eq $class;
+        my $namespace = $event->namespace;
 
-        $event = $event->to_class($class);
+        if (grep { $_ eq $class } ($namespace, @{ $event->roles })) {
 
-        $debug->($event) if $debug;
+            # Note that we have to cast it to the namespace on the
+            # packet (which is a class), and not the $class argument
+            # (which could be a role!)
+            #
+            # Yes, this code should be simplified/improved!
 
-        if ($filter) {
+            $event = $event->to_class($namespace);
 
-            # Check our filter, and skip if required
-            local $_ = $event;
-            next unless $filter->($event);
+            $debug->($event) if $debug;
 
+            if ($filter) {
+
+                # Check our filter, and skip if required
+                local $_ = $event;
+                next unless $filter->($event);
+
+            }
+
+            # Everything passes! Trigger our callback
+            { local $_ = $event; $then->($event); }
         }
-
-        # Everything passes! Trigger our callback
-        { local $_ = $event; $then->($event); }
     }
 }
 
@@ -107,7 +116,7 @@ method notify($message, @args) {
     return $self->intent( NOTIFY,
         message => $message,
         @args,
-    )->send_msg;
+    );
 }
 
 
@@ -152,10 +161,19 @@ method intent($type, @args) {
     );
 }
 
-use constant CLASS_PREFIX => 'Exobrain::';
+
+use constant AGENT_PREFIX => 'Agent::';
+
+method run(Str $class) {
+    my $agent = $self->_load_component( AGENT_PREFIX . $class )->new;
+
+    return $agent->start;
+}
 
 # Loads a class, automatically adding Exobrain if
 # required. Returns the class loaded.
+
+use constant CLASS_PREFIX => 'Exobrain::';
 
 method _load_component(Str $class) {
     $class = CLASS_PREFIX . $class;
@@ -179,7 +197,7 @@ Exobrain - Core Exobrain accessor class
 
 =head1 VERSION
 
-version 0.06
+version 1.00
 
 =head1 METHODS
 
@@ -192,6 +210,11 @@ version 0.06
     );
 
 When we see packets of a particular class, do a particular thing.
+The C<class> need not strictly be a class, but may also be a
+C<role>.
+
+The 'Exobrain::' prefix should not be supplied to the class/roles
+you are searching for.
 
 If the optional C<debug> option is passed with a coderef,  that will be run for
 every event in the desired class, before the filter is evaluated.
@@ -215,10 +238,13 @@ This is a thin wrapper around C< $exobrain->intent('Notify', ... >.
 
 =head2 message
 
-    $exobrain->message( ... )->send_msg;
+    $exobrain->message( ... );
 
 Shortcut to create a 'raw' message. The exobrain parameter will be passed
 to the class constructor automatically.
+
+The message I<will> be sent automatically, unless the C<nosend> parameter
+is set to a true value.
 
 =head2 measure
 
@@ -243,7 +269,17 @@ Preferred shortcut for making an intent of the desired class. The
 C<exobrain> parameter will be passed to the intent class constructor
 automatically.
 
-=for Pod::Coverage BUILD DEMOLISH CLASS_PREFIX INTENT_PREFIX MEASURE_PREFIX NOTIFY
+=head2 run
+
+    $exobrain->run($agent);
+
+Runs the agent of the class specified. The agent name is
+automatically prepended with "Exobrain::Agent::" and loaded
+first. This method never returns.
+
+This is usually called from the C<exobrain> cmdline program.
+
+=for Pod::Coverage BUILD DEMOLISH CLASS_PREFIX INTENT_PREFIX MEASURE_PREFIX NOTIFY AGENT_PREFIX
 
 =head1 AUTHOR
 

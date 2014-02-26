@@ -48,8 +48,8 @@
             "MooseX::Types" : "0",
             "MooseX::Types::Moose" : "0",
             "Net::IMAP::Client" : "0",
-            "Net::Twitter" : "0",
             "POSIX" : "0",
+            "SMS::Send" : "0",
             "Socket" : "0",
             "Storable" : "0",
             "Term::ReadKey" : "0",
@@ -89,6 +89,6 @@
          "web" : "https://github.com/pjf/exobrain"
       }
    },
-   "version" : "0.06"
+   "version" : "1.00"
 }
 

@@ -10,13 +10,20 @@ my $json = JSON::Any->new( allow_blessed => 1 );
 use MooseX::Types -declare => [qw(
     JSON
     POI
-    TweetStr
-)];;
+    SmsStr
+    PhoneNum
+    Exobrain
+    PosNum
+    PosInt
+    TimeOut
+)];
 
 use MooseX::Types::Moose qw(
     HashRef
     Ref
     Str
+    Num
+    Int
 );
 
 subtype JSON,
@@ -29,10 +36,33 @@ coerce JSON,
     via { $json->encode($_) }
 ;
 
-subtype TweetStr,
+subtype SmsStr,
     as Str,
-    where { length($_) <= 140 }
+    where { length($_) <= 160 }
 ;
+
+# TODO: Properly define phone numbers
+subtype PhoneNum,
+    as Str,
+    where { 1 },
+;
+
+subtype PosNum,
+    as Num,
+    where { $_ > 0 }
+;
+
+subtype PosInt,
+    as Int,
+    where { $_ > 0 }
+;
+
+subtype TimeOut,
+    as PosNum,
+    where { 1 },
+;
+
+class_type Exobrain, { class => 'Exobrain' } ;
 
 class_type POI,
     { class => 'Exobrain::Measurement::Geo::POI' }
@@ -55,7 +85,7 @@ Exobrain::Types
 
 =head1 VERSION
 
-version 0.06
+version 1.00
 
 =head1 AUTHOR
 

@@ -24,7 +24,7 @@ Exobrain::Intent::PersonalLog
 
 =head1 VERSION
 
-version 0.06
+version 1.00
 
 =head1 SYNOPSIS
 

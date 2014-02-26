@@ -25,7 +25,7 @@ router - Exobrain router. This *must* be running for exobrain to work
 
 =head1 VERSION
 
-version 0.06
+version 1.00
 
 =head1 AUTHOR
 

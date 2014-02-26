@@ -19,6 +19,9 @@ has timestamp => ( is => 'ro', isa => 'Int', default => sub { time() } );
 has exobrain  => ( is => 'rw', isa => 'Exobrain');
 has raw       => ( is => 'ro', isa => 'Ref' );
 has source    => ( is => 'ro', isa => 'Str', default => "$0" );
+has nosend    => ( is => 'ro', isa => 'Bool', default => 0 );
+has _sent     => ( is => 'rw', isa => 'Bool', default => 0 );
+has roles     => ( is => 'rw', isa => 'ArrayRef[Str]' );
 
 # This can be used to explicitly set the data, ignoring the
 # payload attributes.
@@ -33,6 +36,34 @@ requires qw(summary);
 #       for handling objects.
 
 my $json = JSON::Any->new( convert_blessed => 1 );
+
+# We define a dummy BUILD method so the class that consumes us doesn't
+# need to define its own, but we can still use 'after BUILD' later.
+# Many thanks to hobbs on #Moose for this. ;)
+
+sub BUILD { }
+
+after BUILD => sub {
+    my $self = shift;
+
+    # Calculate our roles and attach them to the packet.
+
+    unless ($self->roles) {
+        my @roles = map { $_->name } $self->meta->calculate_all_roles;
+
+        # Strip prefixes
+        foreach (@roles) { s{^Exobrain::}{}; }
+
+        $self->roles(\@roles);
+    }
+
+    # Send our packet, unless nosend is set.
+    unless ($self->nosend) {
+        $self->send_msg;
+    }
+
+    return;
+};
 
 
 func payload($name, @args) {
@@ -93,6 +124,11 @@ method data() {
 
 method send_msg($socket?) {
 
+    if ($self->_sent) {
+        carp "Packet of type ".$self->namespace." already sent.";
+        return;
+    }
+
     # If we don't have a socket, grab it from our exobrain object
     # (if it exists)
 
@@ -109,6 +145,8 @@ method send_msg($socket?) {
 
     $socket->send_multipart(\@frames);
 
+    $self->_sent(1);
+
     return;
 }
 
@@ -118,7 +156,11 @@ method _frames() {
     my @frames;
 
     push(@frames, join("_", "EXOBRAIN", $self->namespace, $self->source));
-    push(@frames, "XXX - JSON - timestamp => " . $self->timestamp);
+    push(@frames, $json->encode( {
+        timestamp => $self->timestamp,
+        roles     => $self->roles,
+        # TODO: Add some sort of version metadata
+    } ) );
     push(@frames, $self->summary // "");
     push(@frames, $json->encode( $self->data ));
     push(@frames, $json->encode( $self->raw  || {} ));
@@ -130,7 +172,7 @@ method _frames() {
 method dump() {
     my $dumpstr = "";
 
-    foreach my $method ( qw(namespace timestamp source data raw summary)) {
+    foreach my $method ( qw(raw data namespace roles source summary)) {
         my $data = $self->$method // "";
         if (ref $data) { $data = Dumper $data };
         $dumpstr .= "$method : $data\n";
@@ -161,7 +203,7 @@ Exobrain::Message
 
 =head1 VERSION
 
-version 0.06
+version 1.00
 
 =head1 DESCRIPTION
 
@@ -197,6 +239,13 @@ over the exobrain bus) by tallying payload attributes.
 Sends the message across the exobrain bus. If no socket is provided,
 the one from the exobrain object (if we were built with one) is used.
 
+This method is invoked automatically unless the C<nosend> option
+is used when the message was created.
+
+This generates a warning (and does NOT send the packet) if
+the C<_sent> flag on the message is set. This flag is set automatically
+after sending.
+
 =head2 dump()
 
     my $pkt_debug = $msg->dump;
@@ -204,7 +253,7 @@ the one from the exobrain object (if we were built with one) is used.
 Provides a string containing a dump of universal packet attributes.
 Intended for debugging.
 
-=for Pod::Coverage PAYLOAD_CLASS ZMQ_SNDMORE
+=for Pod::Coverage PAYLOAD_CLASS ZMQ_SNDMORE BUILD
 
 =head1 AUTHOR
 

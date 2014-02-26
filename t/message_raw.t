@@ -31,6 +31,7 @@ my $msg = $exobrain->message(
     data      => $data,
     raw       => $data,
     summary   => $summary,
+    nosend    => 1,
 );
 
 # Testing the 'off the wire' build by frames syntax.
@@ -38,7 +39,7 @@ my $msg = $exobrain->message(
 
 my $raw_msg = Exobrain::Message::Raw->new( [
     'EXOBRAIN_TEST_TESTING',
-    $j->encode( { time => time() } ),
+    $j->encode( { timestamp => time(), roles => [ "Testing" ] } ),
     $summary,
     $j->encode( $data ),
     $j->encode( $data ),

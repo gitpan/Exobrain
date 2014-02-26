@@ -46,6 +46,9 @@ method to_class($class) {
         raw       => $self->raw,
         namespace => $self->namespace,
         source    => $self->source,
+        nosend    => 1,                 # Without this, we packet-storm!
+
+        # We can leave roles out, because it will auto-calculate
     );
 }
 
@@ -53,18 +56,22 @@ around BUILDARGS => sub {
     my ($orig, $class, @args) = @_;
 
     # If called with an arrayref, then we're reconstituting a packet
-    # off the wire
+    # off the wire. We need to make sure we build this with the 'nosend'
+    # flag set, otherwise we'll result in a packet-storm!
 
     if (@args == 1 and ref($args[0]) eq 'ARRAY') {
         my $frames = $args[0];
         my (undef, $namespace, $source) = split(/_/, $frames->[0]);
+        my $metadata = $json->decode( $frames->[1] );
         return $class->$orig(
             namespace => $namespace,
             source    => $source,
-            timestamp => time(), # XXX - This should be off the wire
+            timestamp => $metadata->{timestamp},
+            roles     => $metadata->{roles},
             summary   => $frames->[2],
             data      => $json->decode( $frames->[3] ),
             raw       => $json->decode( $frames->[4] ),
+            nosend    => 1,
         );
     }
 
@@ -84,7 +91,7 @@ Exobrain::Message::Raw
 
 =head1 VERSION
 
-version 0.06
+version 1.00
 
 =for Pod::Coverage BUILD
 
