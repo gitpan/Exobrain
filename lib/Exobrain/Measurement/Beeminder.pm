@@ -1,14 +1,13 @@
 package Exobrain::Measurement::Beeminder;
 
-# ABSTRACT: Mailbox measurement packet
-
-# VERSION
-
 use 5.010;
 use autodie;
 use Moose;
 use Carp qw(croak);
 use Method::Signatures;
+
+# ABSTRACT: Beeminder measurement packet
+our $VERSION = '1.01'; # VERSION
 
 # Declare that we will have a summary attribute. This is to make
 # our roles happy.
@@ -72,11 +71,11 @@ __END__
 
 =head1 NAME
 
-Exobrain::Measurement::Beeminder - Mailbox measurement packet
+Exobrain::Measurement::Beeminder - Beeminder measurement packet
 
 =head1 VERSION
 
-version 1.00
+version 1.01
 
 =head1 DESCRIPTION
 

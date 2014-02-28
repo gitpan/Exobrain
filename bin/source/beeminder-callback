@@ -62,7 +62,7 @@ beeminder-callback - Turn Beeminder callbacks into exobrain measurements
 
 =head1 VERSION
 
-version 1.00
+version 1.01
 
 =begin example
 

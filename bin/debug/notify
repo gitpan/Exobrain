@@ -24,7 +24,7 @@ notify - Send an exobrain notify intent from the cmdline
 
 =head1 VERSION
 
-version 1.00
+version 1.01
 
 =head1 AUTHOR
 

@@ -7,8 +7,10 @@ requires "Data::Structure::Util" => "0";
 requires "Date::Manip::Date" => "0";
 requires "Devel::Pragma" => "0.60";
 requires "Facebook::Graph" => "0";
+requires "File::XDG" => "0";
 requires "FindBin" => "0";
 requires "Getopt::Std" => "0";
+requires "Hash::Merge::Simple" => "0";
 requires "IO::Socket::SSL" => "0";
 requires "JSON::Any" => "0";
 requires "Method::Signatures" => "0";
@@ -44,6 +46,7 @@ requires "utf8::all" => "0";
 requires "warnings" => "0";
 
 on 'test' => sub {
+  requires "File::Spec" => "0";
   requires "Test::More" => "0";
   requires "Test::Most" => "0";
 };

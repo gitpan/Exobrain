@@ -118,7 +118,7 @@ sub ubic_services {
             'bee-habit'  => daemon('bee-habit'),
             'bee-inbox'  => daemon('bee-inbox'),
             'rtm-adder'  => daemon('rtm-adder'),
-            'sentbox-reward'  => daemon('sentbox-reward'),
+            'sentbox-reward'  => agent('Action::SendmailXP'),
             'bee-notify' => daemon('bee-notify'),
             'geo-notify' => daemon('geo-notify'),
             'social-notify' => agent('Action::SocialNotify'),
@@ -150,7 +150,7 @@ exobrain - UBIC service file for exobrain
 
 =head1 VERSION
 
-version 1.00
+version 1.01
 
 =head1 SYNOPSIS
 

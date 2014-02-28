@@ -91,7 +91,7 @@ Exobrain::Message::Raw
 
 =head1 VERSION
 
-version 1.00
+version 1.01
 
 =for Pod::Coverage BUILD
 

@@ -9,12 +9,11 @@ use WebService::HabitRPG;
 
 # PODNAME: habitrpg
 # ABSTRACT: Send HabitRPG intents to HabitRPG
+our $VERSION = '1.01'; # VERSION
 
 use constant DEBUG => 0;
 
 my $exobrain = Exobrain->new;
-
-my $config = Exobrain::Config->new;
 
 my $hrpg = WebService::HabitRPG->new(
     api_token => $exobrain->config->{HabitRPG}{api_token},
@@ -79,7 +78,7 @@ habitrpg - Send HabitRPG intents to HabitRPG
 
 =head1 VERSION
 
-version 1.00
+version 1.01
 
 =head1 AUTHOR
 

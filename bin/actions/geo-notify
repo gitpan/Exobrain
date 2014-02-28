@@ -33,7 +33,7 @@ geo-notify - Send a notification every time we spot the user check-in.
 
 =head1 VERSION
 
-version 1.00
+version 1.01
 
 =head1 AUTHOR
 

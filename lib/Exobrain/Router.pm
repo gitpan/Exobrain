@@ -48,7 +48,7 @@ Exobrain::Router
 
 =head1 VERSION
 
-version 1.00
+version 1.01
 
 =for Pod::Coverage ZMQ_FORWARDER ZMQ_PUB ZMQ_SUB ZMQ_SUBSCRIBE
 

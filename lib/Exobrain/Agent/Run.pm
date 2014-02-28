@@ -35,7 +35,7 @@ Exobrain::Agent::Run - Role for agents which run 'continously'
 
 =head1 VERSION
 
-version 1.00
+version 1.01
 
 =head1 METHODS
 

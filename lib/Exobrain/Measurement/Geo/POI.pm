@@ -1,11 +1,10 @@
 package Exobrain::Measurement::Geo::POI;
 
-# ABSTRACT: Geo Point Of Interest class
-
-# VERSION
-
 use 5.010;
 use Moose;
+
+# ABSTRACT: Geo Point Of Interest class
+our $VERSION = '1.01'; # VERSION
 
 with 'Exobrain::JSONify';
 
@@ -34,7 +33,7 @@ Exobrain::Measurement::Geo::POI - Geo Point Of Interest class
 
 =head1 VERSION
 
-version 1.00
+version 1.01
 
 =head1 AUTHOR
 

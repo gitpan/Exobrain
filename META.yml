@@ -3,6 +3,7 @@ abstract: 'Core Exobrain accessor class'
 author:
   - 'Paul Fenwick <pjf@cpan.org>'
 build_requires:
+  File::Spec: 0
   Test::More: 0
   Test::Most: 0
 configure_requires:
@@ -24,8 +25,10 @@ requires:
   Date::Manip::Date: 0
   Devel::Pragma: 0.60
   Facebook::Graph: 0
+  File::XDG: 0
   FindBin: 0
   Getopt::Std: 0
+  Hash::Merge::Simple: 0
   IO::Socket::SSL: 0
   JSON::Any: 0
   Method::Signatures: 0
@@ -60,5 +63,7 @@ requires:
   utf8::all: 0
   warnings: 0
 resources:
+  bugtracker: https://github.com/pjf/exobrain/issues
+  homepage: https://github.com/pjf/exobrain
   repository: git://github.com/pjf/exobrain
-version: 1.00
+version: 1.01

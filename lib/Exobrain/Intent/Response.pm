@@ -4,7 +4,7 @@ use 5.010;
 use Moose;
 use Method::Signatures;
 
-# VERSION
+our $VERSION = '1.01'; # VERSION
 # ABSTRACT: A generic class for responses to social media messages
 
 
@@ -31,7 +31,7 @@ Exobrain::Intent::Response - A generic class for responses to social media messa
 
 =head1 VERSION
 
-version 1.00
+version 1.01
 
 =head1 SYNOPSIS
 

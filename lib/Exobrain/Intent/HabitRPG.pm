@@ -13,7 +13,6 @@ BEGIN { with 'Exobrain::Intent'; };
 
 payload task      => ( isa => 'Str' , required => 1 );
 payload direction => ( isa => 'Str' , required => 1 );  # TODO - Restrict to up/down
-payload public    => ( isa => 'Bool', default => 0 );
 
 1;
 
@@ -27,14 +26,13 @@ Exobrain::Intent::HabitRPG
 
 =head1 VERSION
 
-version 1.00
+version 1.01
 
 =head1 SYNPOSIS
 
     $exobrain->intent('HabitRPG',
         task      => $id,
         direction => 'up',
-        public    => 1,
     );
 
 =head1 AUTHOR

@@ -1,13 +1,12 @@
 package Exobrain::Measurement::Mailbox;
 
-# ABSTRACT: Mailbox measurement packet
-
-# VERSION
-
 use 5.010;
 use autodie;
 use Moose;
 use Method::Signatures;
+
+# ABSTRACT: Mailbox measurement packet
+our $VERSION = '1.01'; # VERSION
 
 # Declare that we will have a summary attribute. This is to make
 # our roles happy.
@@ -46,7 +45,7 @@ Exobrain::Measurement::Mailbox - Mailbox measurement packet
 
 =head1 VERSION
 
-version 1.00
+version 1.01
 
 =head1 DESCRIPTION
 

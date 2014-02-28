@@ -32,7 +32,6 @@ my %WriteMakefileArgs = (
     "bin/sink/beeminder",
     "bin/actions/bee-notify",
     "bin/actions/geo-sms",
-    "bin/actions/sentbox-reward",
     "bin/actions/geo-personallog",
     "bin/actions/bee-habit",
     "bin/actions/bee-inbox",
@@ -56,8 +55,10 @@ my %WriteMakefileArgs = (
     "Date::Manip::Date" => 0,
     "Devel::Pragma" => "0.60",
     "Facebook::Graph" => 0,
+    "File::XDG" => 0,
     "FindBin" => 0,
     "Getopt::Std" => 0,
+    "Hash::Merge::Simple" => 0,
     "IO::Socket::SSL" => 0,
     "JSON::Any" => 0,
     "Method::Signatures" => 0,
@@ -92,10 +93,11 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
+    "File::Spec" => 0,
     "Test::More" => 0,
     "Test::Most" => 0
   },
-  "VERSION" => "1.00",
+  "VERSION" => "1.01",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -112,8 +114,11 @@ my %FallbackPrereqs = (
   "Date::Manip::Date" => 0,
   "Devel::Pragma" => "0.60",
   "Facebook::Graph" => 0,
+  "File::Spec" => 0,
+  "File::XDG" => 0,
   "FindBin" => 0,
   "Getopt::Std" => 0,
+  "Hash::Merge::Simple" => 0,
   "IO::Socket::SSL" => 0,
   "JSON::Any" => 0,
   "Method::Signatures" => 0,
