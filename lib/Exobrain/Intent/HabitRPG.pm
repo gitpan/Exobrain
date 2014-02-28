@@ -26,7 +26,7 @@ Exobrain::Intent::HabitRPG
 
 =head1 VERSION
 
-version 1.01
+version 1.02
 
 =head1 SYNPOSIS
 

@@ -4,7 +4,7 @@ use 5.010;
 use Moose;
 
 # ABSTRACT: Geo Point Of Interest class
-our $VERSION = '1.01'; # VERSION
+our $VERSION = '1.02'; # VERSION
 
 with 'Exobrain::JSONify';
 
@@ -33,7 +33,7 @@ Exobrain::Measurement::Geo::POI - Geo Point Of Interest class
 
 =head1 VERSION
 
-version 1.01
+version 1.02
 
 =head1 AUTHOR
 

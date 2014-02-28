@@ -6,7 +6,6 @@ requires "Data::Dumper" => "0";
 requires "Data::Structure::Util" => "0";
 requires "Date::Manip::Date" => "0";
 requires "Devel::Pragma" => "0.60";
-requires "Facebook::Graph" => "0";
 requires "File::XDG" => "0";
 requires "FindBin" => "0";
 requires "Getopt::Std" => "0";

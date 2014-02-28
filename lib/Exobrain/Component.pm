@@ -2,7 +2,7 @@ package Exobrain::Component;
 use Moose::Role;
 
 # ABSTRACT: Role used for component definitions.
-our $VERSION = '1.01'; # VERSION
+our $VERSION = '1.02'; # VERSION
 
 requires qw(component services);
 
@@ -18,7 +18,7 @@ Exobrain::Component - Role used for component definitions.
 
 =head1 VERSION
 
-version 1.01
+version 1.02
 
 =head1 AUTHOR
 

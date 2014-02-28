@@ -26,7 +26,7 @@ Exobrain::Agent::Action::Ping - Automatically respond to any 'ping' tag sent to 
 
 =head1 VERSION
 
-version 1.01
+version 1.02
 
 =head1 AUTHOR
 

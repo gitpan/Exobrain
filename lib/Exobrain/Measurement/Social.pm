@@ -5,7 +5,7 @@ use Moose::Role;
 use Method::Signatures;
 
 # ABSTRACT: Base class for all social media events
-our $VERSION = '1.01'; # VERSION
+our $VERSION = '1.02'; # VERSION
 
 BEGIN { with 'Exobrain::Message'; }
 
@@ -48,7 +48,7 @@ Exobrain::Measurement::Social - Base class for all social media events
 
 =head1 VERSION
 
-version 1.01
+version 1.02
 
 =head1 AUTHOR
 

@@ -40,7 +40,6 @@ my %WriteMakefileArgs = (
     "bin/source/beeminder-bounties",
     "bin/source/foursquare",
     "bin/source/imap",
-    "bin/source/facebook",
     "bin/source/beeminder-callback"
   ],
   "LICENSE" => "perl",
@@ -54,7 +53,6 @@ my %WriteMakefileArgs = (
     "Data::Structure::Util" => 0,
     "Date::Manip::Date" => 0,
     "Devel::Pragma" => "0.60",
-    "Facebook::Graph" => 0,
     "File::XDG" => 0,
     "FindBin" => 0,
     "Getopt::Std" => 0,
@@ -97,7 +95,7 @@ my %WriteMakefileArgs = (
     "Test::More" => 0,
     "Test::Most" => 0
   },
-  "VERSION" => "1.01",
+  "VERSION" => "1.02",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -113,7 +111,6 @@ my %FallbackPrereqs = (
   "Data::Structure::Util" => 0,
   "Date::Manip::Date" => 0,
   "Devel::Pragma" => "0.60",
-  "Facebook::Graph" => 0,
   "File::Spec" => 0,
   "File::XDG" => 0,
   "FindBin" => 0,

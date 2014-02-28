@@ -26,7 +26,7 @@ Exobrain::Intent::SMS - Send an SMS intent via Exobrain
 
 =head1 VERSION
 
-version 1.01
+version 1.02
 
 =head1 AUTHOR
 

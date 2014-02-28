@@ -24,7 +24,6 @@ requires:
   Data::Structure::Util: 0
   Date::Manip::Date: 0
   Devel::Pragma: 0.60
-  Facebook::Graph: 0
   File::XDG: 0
   FindBin: 0
   Getopt::Std: 0
@@ -66,4 +65,4 @@ resources:
   bugtracker: https://github.com/pjf/exobrain/issues
   homepage: https://github.com/pjf/exobrain
   repository: git://github.com/pjf/exobrain
-version: 1.01
+version: 1.02

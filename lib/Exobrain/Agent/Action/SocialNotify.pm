@@ -3,7 +3,7 @@ use Moose;
 use Method::Signatures;
 
 # ABSTRACT: Notify user of social events directed at them.
-our $VERSION = '1.01'; # VERSION
+our $VERSION = '1.02'; # VERSION
 
 with 'Exobrain::Agent::Run';
 
@@ -29,7 +29,7 @@ Exobrain::Agent::Action::SocialNotify - Notify user of social events directed at
 
 =head1 VERSION
 
-version 1.01
+version 1.02
 
 =head1 AUTHOR
 

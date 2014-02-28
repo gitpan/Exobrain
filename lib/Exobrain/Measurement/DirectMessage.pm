@@ -4,7 +4,7 @@ use Moose;
 use Method::Signatures;
 
 # ABSTRACT: A direct message of any sort
-our $VERSION = '1.01'; # VERSION
+our $VERSION = '1.02'; # VERSION
 
 # Declare that we will have a summary attribute. This is to make
 # our roles happy.
@@ -39,7 +39,7 @@ Exobrain::Measurement::DirectMessage - A direct message of any sort
 
 =head1 VERSION
 
-version 1.01
+version 1.02
 
 =head1 DESCRIPTION
 

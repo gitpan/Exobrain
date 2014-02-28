@@ -9,7 +9,7 @@ use File::XDG;
 # ABSTRACT: Reads exobrain config
 
 
-our $VERSION = '1.01'; # VERSION
+our $VERSION = '1.02'; # VERSION
 
 sub new {
     my ($class) = @_;
@@ -89,7 +89,7 @@ Exobrain::Config - Reads exobrain config
 
 =head1 VERSION
 
-version 1.01
+version 1.02
 
 =head1 SYNOPSIS
 
