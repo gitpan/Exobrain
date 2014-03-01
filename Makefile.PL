@@ -3,14 +3,14 @@
 use strict;
 use warnings;
 
-use 5.010;
+use 5.010000;
 
 use ExtUtils::MakeMaker 6.30;
 
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Core Exobrain accessor class",
+  "ABSTRACT" => "Automate your life with Exobrain",
   "AUTHOR" => "Paul Fenwick <pjf\@cpan.org>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
@@ -45,26 +45,32 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Exobrain",
   "PREREQ_PM" => {
+    "CHI" => 0,
+    "Carp" => 0,
     "Config::Tiny" => 0,
     "Dancer" => 0,
     "Data::Dumper" => 0,
+    "Data::Structure::Util" => 0,
     "Date::Manip::Date" => 0,
     "Devel::Pragma" => "0.60",
-    "Exobrain" => 0,
-    "Exobrain::Bus" => 0,
-    "Exobrain::Cache" => 0,
-    "Exobrain::Config" => 0,
-    "Exobrain::Intent::HabitRPG" => 0,
-    "Exobrain::Message" => 0,
-    "Exobrain::Router" => 0,
+    "File::Copy" => 0,
+    "File::XDG" => 0,
+    "FindBin" => 0,
     "Getopt::Std" => 0,
+    "Hash::Merge::Simple" => 0,
     "IO::Socket::SSL" => 0,
     "JSON::Any" => 0,
     "Method::Signatures" => 0,
+    "Moose" => 0,
+    "Moose::Role" => 0,
+    "Moose::Util::TypeConstraints" => 0,
+    "MooseX::Types" => 0,
+    "MooseX::Types::Moose" => 0,
     "Net::IMAP::Client" => 0,
     "POSIX" => 0,
     "SMS::Send" => 0,
     "Socket" => 0,
+    "Storable" => 0,
     "Term::ReadKey" => 0,
     "Try::Tiny" => 0,
     "Ubic" => 0,
@@ -76,24 +82,21 @@ my %WriteMakefileArgs = (
     "WebService::Idonethis" => "0.22",
     "WebService::Pushover" => 0,
     "WebService::RTMAgent" => "0.600",
+    "ZMQ" => 0,
+    "ZMQ::Constants" => 0,
     "autodie" => 0,
     "constant" => 0,
+    "parent" => 0,
     "strict" => 0,
     "utf8::all" => 0,
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "Exobrain::Agent" => 0,
-    "Exobrain::Measurement::Mailbox" => 0,
-    "Exobrain::Message::Raw" => 0,
-    "Exobrain::Test" => 0,
     "File::Spec" => 0,
-    "FindBin" => 0,
-    "Moose" => 0,
     "Test::More" => 0,
     "Test::Most" => 0
   },
-  "VERSION" => "1.03",
+  "VERSION" => "1.04",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -101,33 +104,33 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "CHI" => 0,
+  "Carp" => 0,
   "Config::Tiny" => 0,
   "Dancer" => 0,
   "Data::Dumper" => 0,
+  "Data::Structure::Util" => 0,
   "Date::Manip::Date" => 0,
   "Devel::Pragma" => "0.60",
-  "Exobrain" => 0,
-  "Exobrain::Agent" => 0,
-  "Exobrain::Bus" => 0,
-  "Exobrain::Cache" => 0,
-  "Exobrain::Config" => 0,
-  "Exobrain::Intent::HabitRPG" => 0,
-  "Exobrain::Measurement::Mailbox" => 0,
-  "Exobrain::Message" => 0,
-  "Exobrain::Message::Raw" => 0,
-  "Exobrain::Router" => 0,
-  "Exobrain::Test" => 0,
+  "File::Copy" => 0,
   "File::Spec" => 0,
+  "File::XDG" => 0,
   "FindBin" => 0,
   "Getopt::Std" => 0,
+  "Hash::Merge::Simple" => 0,
   "IO::Socket::SSL" => 0,
   "JSON::Any" => 0,
   "Method::Signatures" => 0,
   "Moose" => 0,
+  "Moose::Role" => 0,
+  "Moose::Util::TypeConstraints" => 0,
+  "MooseX::Types" => 0,
+  "MooseX::Types::Moose" => 0,
   "Net::IMAP::Client" => 0,
   "POSIX" => 0,
   "SMS::Send" => 0,
   "Socket" => 0,
+  "Storable" => 0,
   "Term::ReadKey" => 0,
   "Test::More" => 0,
   "Test::Most" => 0,
@@ -141,8 +144,11 @@ my %FallbackPrereqs = (
   "WebService::Idonethis" => "0.22",
   "WebService::Pushover" => 0,
   "WebService::RTMAgent" => "0.600",
+  "ZMQ" => 0,
+  "ZMQ::Constants" => 0,
   "autodie" => 0,
   "constant" => 0,
+  "parent" => 0,
   "strict" => 0,
   "utf8::all" => 0,
   "warnings" => 0

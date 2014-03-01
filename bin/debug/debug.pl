@@ -42,7 +42,7 @@ debug.pl - View events on the exobrain bus
 
 =head1 VERSION
 
-version 1.03
+version 1.04
 
 =head1 AUTHOR
 

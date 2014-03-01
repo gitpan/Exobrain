@@ -1,5 +1,12 @@
 Revision history for Exobrain
 
+1.04      2014-02-28 23:18:32EST-0500 America/Montreal
+
+    * FEATURE: Added a `exobrain setup` command to do basic exobrain/ubic setup.
+    * DOCS: Improved documentation in sample .exobrainrc file.
+    * DOCS: Expanded information in Exobrain.pm
+    * BUGFIX: Fixed bug where libraries were not packaged.
+
 1.03      2014-02-28 12:47:07EST-0500 America/Montreal
 
     * DISTRIBUTION: De-crufted distributed tarball.
