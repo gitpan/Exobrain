@@ -30,6 +30,7 @@ requires:
   Getopt::Std: 0
   Hash::Merge::Simple: 0
   IO::Socket::SSL: 0
+  IPC::System::Simple: 0
   JSON::Any: 0
   Method::Signatures: 0
   Moose: 0
@@ -66,4 +67,4 @@ resources:
   bugtracker: https://github.com/pjf/exobrain/issues
   homepage: https://github.com/pjf/exobrain
   repository: git://github.com/pjf/exobrain
-version: 1.05
+version: 1.06

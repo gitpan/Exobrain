@@ -41,6 +41,7 @@
             "Getopt::Std" : "0",
             "Hash::Merge::Simple" : "0",
             "IO::Socket::SSL" : "0",
+            "IPC::System::Simple" : "0",
             "JSON::Any" : "0",
             "Method::Signatures" : "0",
             "Moose" : "0",
@@ -96,6 +97,6 @@
          "web" : "https://github.com/pjf/exobrain"
       }
    },
-   "version" : "1.05"
+   "version" : "1.06"
 }
 

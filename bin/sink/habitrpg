@@ -9,7 +9,7 @@ use WebService::HabitRPG;
 
 # PODNAME: habitrpg
 # ABSTRACT: Send HabitRPG intents to HabitRPG
-our $VERSION = '1.05'; # VERSION
+our $VERSION = '1.06'; # VERSION
 
 use constant DEBUG => 0;
 
@@ -78,7 +78,7 @@ habitrpg - Send HabitRPG intents to HabitRPG
 
 =head1 VERSION
 
-version 1.05
+version 1.06
 
 =head1 AUTHOR
 

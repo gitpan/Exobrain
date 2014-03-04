@@ -5,7 +5,7 @@ use Method::Signatures;
 with 'Exobrain::Agent::Run';
 
 # ABSTRACT: Reward users on HabitRPG for sending email.
-our $VERSION = '1.05'; # VERSION
+our $VERSION = '1.06'; # VERSION
 
 use constant DEBUG => 0;
 
@@ -52,7 +52,7 @@ Exobrain::Agent::Action::SendmailXP - Reward users on HabitRPG for sending email
 
 =head1 VERSION
 
-version 1.05
+version 1.06
 
 =for Pod::Coverage DEBUG
 

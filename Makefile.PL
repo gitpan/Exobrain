@@ -53,6 +53,7 @@ my %WriteMakefileArgs = (
     "Getopt::Std" => 0,
     "Hash::Merge::Simple" => 0,
     "IO::Socket::SSL" => 0,
+    "IPC::System::Simple" => 0,
     "JSON::Any" => 0,
     "Method::Signatures" => 0,
     "Moose" => 0,
@@ -91,7 +92,7 @@ my %WriteMakefileArgs = (
     "Test::Most" => 0,
     "Test::Warn" => 0
   },
-  "VERSION" => "1.05",
+  "VERSION" => "1.06",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -113,6 +114,7 @@ my %FallbackPrereqs = (
   "Getopt::Std" => 0,
   "Hash::Merge::Simple" => 0,
   "IO::Socket::SSL" => 0,
+  "IPC::System::Simple" => 0,
   "JSON::Any" => 0,
   "Method::Signatures" => 0,
   "Moose" => 0,

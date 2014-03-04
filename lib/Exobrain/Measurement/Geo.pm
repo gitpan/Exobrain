@@ -9,7 +9,7 @@ use Exobrain::Measurement::Geo::POI;
 use Exobrain::Types qw(POI);
 
 # ABSTRACT: Geo measurement packet
-our $VERSION = '1.05'; # VERSION
+our $VERSION = '1.06'; # VERSION
 
 # Declare that we will have a summary attribute. This is to make
 # our roles happy.
@@ -68,7 +68,7 @@ Exobrain::Measurement::Geo - Geo measurement packet
 
 =head1 VERSION
 
-version 1.05
+version 1.06
 
 =head1 DESCRIPTION
 

@@ -11,6 +11,7 @@ requires "FindBin" => "0";
 requires "Getopt::Std" => "0";
 requires "Hash::Merge::Simple" => "0";
 requires "IO::Socket::SSL" => "0";
+requires "IPC::System::Simple" => "0";
 requires "JSON::Any" => "0";
 requires "Method::Signatures" => "0";
 requires "Moose" => "0";

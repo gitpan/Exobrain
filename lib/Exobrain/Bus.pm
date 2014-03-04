@@ -84,7 +84,7 @@ Exobrain::Bus
 
 =head1 VERSION
 
-version 1.05
+version 1.06
 
 =for Pod::Coverage BUILD ZMQ_PUB ZMQ_SUB ZMQ_SUBSCRIBE
 
