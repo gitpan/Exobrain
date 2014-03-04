@@ -31,7 +31,6 @@
             "CHI" : "0",
             "Carp" : "0",
             "Config::Tiny" : "0",
-            "Dancer" : "0",
             "Data::Dumper" : "0",
             "Data::Structure::Util" : "0",
             "Date::Manip::Date" : "0",
@@ -60,7 +59,6 @@
             "Ubic::Multiservice::Simple" : "0",
             "Ubic::Service::SimpleDaemon" : "0",
             "WWW::Mechanize" : "0",
-            "WebService::Beeminder" : "0",
             "WebService::HabitRPG" : "0",
             "WebService::Idonethis" : "0.22",
             "WebService::Pushover" : "0",
@@ -69,6 +67,7 @@
             "ZMQ::Constants" : "0",
             "autodie" : "0",
             "constant" : "0",
+            "feature" : "0",
             "parent" : "0",
             "perl" : "v5.10.0",
             "strict" : "0",
@@ -80,7 +79,8 @@
          "requires" : {
             "File::Spec" : "0",
             "Test::More" : "0",
-            "Test::Most" : "0"
+            "Test::Most" : "0",
+            "Test::Warn" : "0"
          }
       }
    },
@@ -96,6 +96,6 @@
          "web" : "https://github.com/pjf/exobrain"
       }
    },
-   "version" : "1.04"
+   "version" : "1.05"
 }
 

@@ -3,13 +3,14 @@
 use v5.10.0;
 use strict;
 use warnings;
-use autodie;
+use autodie qw(:all);
 
 use Ubic::Multiservice::Simple;
 use Ubic::Service::SimpleDaemon;
 use File::Copy qw(copy);
 use autodie qw(copy);
 use Exobrain;
+use Getopt::Std;
 
 # PODNAME: exobrain
 # ABSTRACT: UBIC service file for exobrain
@@ -33,6 +34,27 @@ if (not $command) {
     ubic_services();
 }
 elsif ($command eq 'setup') {
+    my @comps = @args;
+    
+    # If there are components listed, set them up...
+    
+    if (@comps) {
+        my $exobrain = Exobrain->new;
+        foreach my $comp (@comps) {
+            my $comp_module = 'Exobrain::' . $comp;
+            eval "use $comp_module";
+
+            if ($@) { die "Loading $comp_module failed. Did you install it first? (cpanm $comp_module)\n"; }
+
+            say "Configuring $comp_module...\n";
+
+            $comp_module->new->setup;
+        }
+        exit 0;
+    }
+
+    # Otherwise, configure exobrain itself.
+
     say "Setting up exobrain...";
 
     my $ubic = "$ENV{HOME}/ubic";
@@ -61,6 +83,29 @@ elsif ($command eq 'setup') {
     say "Done!\n";
     say "\nYou should use 'ubic start exobrain.core' to start exobrain.";
 
+}
+elsif ($command eq "debug") {
+    my $exobrain = Exobrain->new;
+
+    # Options handling
+
+    local @ARGV  = @args;
+    my %opts = ( v => 0 );
+    getopts('v', \%opts);
+
+    # Loop forever showing packets off the bus, either verbosely
+    # or not. These use the lowest-level functions available, so
+    # should catch even malformed packets.
+
+    while (1) {
+        if ($opts{v}) {
+            say $exobrain->sub->get->dump;
+            say "-" x 50;
+        }
+        else {
+            say $exobrain->sub->get->summary;
+        }
+    }
 }
 elsif ($command eq "run") {
     my ($class) = @args;
@@ -142,16 +187,14 @@ sub ubic_services {
         @component_services,
 
         source => Ubic::Multiservice::Simple->new({
-            beeminder => daemon("beeminder-callback"),
             foursquare => daemon("foursquare"),
         }),
 
         action => Ubic::Multiservice::Simple->new({
             'bee-habit'  => daemon('bee-habit'),
-            'bee-inbox'  => daemon('bee-inbox'),
+            'bee-inbox'  => agent('Action::BeeInbox'),
             'rtm-adder'  => daemon('rtm-adder'),
             'sentbox-reward'  => agent('Action::SendmailXP'),
-            'bee-notify' => daemon('bee-notify'),
             'geo-notify' => daemon('geo-notify'),
             'social-notify' => agent('Action::SocialNotify'),
             'ping'          => agent('Action::Ping'),
@@ -160,7 +203,6 @@ sub ubic_services {
 
         sink => Ubic::Multiservice::Simple->new({
             habitrpg => daemon('habitrpg'),
-            beeminder => daemon('beeminder'),
             idonethis => daemon('idone-send'),
             pushover  => daemon('pushover'),
             sms       => daemon('sms'),
@@ -182,18 +224,25 @@ exobrain - UBIC service file for exobrain
 
 =head1 VERSION
 
-version 1.04
+version 1.05
 
 =head1 SYNOPSIS
 
-    $ cp `which exobrain` ~/ubic/service
-    $ ubic start exobrain
+    $ exobrain setup           # Set up exobrain for use
+
+    $ cpanm Exobrain::Twitter; # Install Exobrain::Twitter
+    $ exobrain setup Twitter   # Set up Exobrain::Twitter
+
+    $ exobrain debug           # See what's happening
+    $ exobrain debug -v        # See more of what's happening
 
 =head1 DESCRIPTION
 
 This is a service file for Ubic which allows for the
 control of exobrain services. It must be placed in
-your F<~/ubic/service> directory to be operational.
+your F<~/ubic/service> directory to be operational,
+which will happen as part of the C<exobrain setup>
+process which you should run.
 
 =head1 AUTHOR
 

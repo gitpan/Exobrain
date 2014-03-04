@@ -25,7 +25,7 @@ Exobrain::JSONify
 
 =head1 VERSION
 
-version 1.04
+version 1.05
 
 =for Pod::Coverage TO_JSON
 

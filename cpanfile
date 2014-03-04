@@ -1,7 +1,6 @@
 requires "CHI" => "0";
 requires "Carp" => "0";
 requires "Config::Tiny" => "0";
-requires "Dancer" => "0";
 requires "Data::Dumper" => "0";
 requires "Data::Structure::Util" => "0";
 requires "Date::Manip::Date" => "0";
@@ -30,7 +29,6 @@ requires "Ubic" => "0";
 requires "Ubic::Multiservice::Simple" => "0";
 requires "Ubic::Service::SimpleDaemon" => "0";
 requires "WWW::Mechanize" => "0";
-requires "WebService::Beeminder" => "0";
 requires "WebService::HabitRPG" => "0";
 requires "WebService::Idonethis" => "0.22";
 requires "WebService::Pushover" => "0";
@@ -39,6 +37,7 @@ requires "ZMQ" => "0";
 requires "ZMQ::Constants" => "0";
 requires "autodie" => "0";
 requires "constant" => "0";
+requires "feature" => "0";
 requires "parent" => "0";
 requires "perl" => "v5.10.0";
 requires "strict" => "0";
@@ -49,6 +48,7 @@ on 'test' => sub {
   requires "File::Spec" => "0";
   requires "Test::More" => "0";
   requires "Test::Most" => "0";
+  requires "Test::Warn" => "0";
 };
 
 on 'configure' => sub {
