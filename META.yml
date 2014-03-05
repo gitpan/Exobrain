@@ -50,7 +50,6 @@ requires:
   Ubic::Service::SimpleDaemon: 0
   WWW::Mechanize: 0
   WebService::HabitRPG: 0
-  WebService::Idonethis: 0.22
   WebService::Pushover: 0
   WebService::RTMAgent: 0.600
   ZMQ: 0
@@ -67,4 +66,4 @@ resources:
   bugtracker: https://github.com/pjf/exobrain/issues
   homepage: https://github.com/pjf/exobrain
   repository: git://github.com/pjf/exobrain
-version: 1.06
+version: 1.07

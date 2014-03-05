@@ -203,7 +203,6 @@ sub ubic_services {
 
         sink => Ubic::Multiservice::Simple->new({
             habitrpg => daemon('habitrpg'),
-            idonethis => daemon('idone-send'),
             pushover  => daemon('pushover'),
             sms       => daemon('sms'),
         }),
@@ -224,7 +223,7 @@ exobrain - UBIC service file for exobrain
 
 =head1 VERSION
 
-version 1.06
+version 1.07
 
 =head1 SYNOPSIS
 

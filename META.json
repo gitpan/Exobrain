@@ -61,7 +61,6 @@
             "Ubic::Service::SimpleDaemon" : "0",
             "WWW::Mechanize" : "0",
             "WebService::HabitRPG" : "0",
-            "WebService::Idonethis" : "0.22",
             "WebService::Pushover" : "0",
             "WebService::RTMAgent" : "0.600",
             "ZMQ" : "0",
@@ -97,6 +96,6 @@
          "web" : "https://github.com/pjf/exobrain"
       }
    },
-   "version" : "1.06"
+   "version" : "1.07"
 }
 

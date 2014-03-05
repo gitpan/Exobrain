@@ -31,7 +31,6 @@ requires "Ubic::Multiservice::Simple" => "0";
 requires "Ubic::Service::SimpleDaemon" => "0";
 requires "WWW::Mechanize" => "0";
 requires "WebService::HabitRPG" => "0";
-requires "WebService::Idonethis" => "0.22";
 requires "WebService::Pushover" => "0";
 requires "WebService::RTMAgent" => "0.600";
 requires "ZMQ" => "0";

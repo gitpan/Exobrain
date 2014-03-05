@@ -24,8 +24,8 @@ my %WriteMakefileArgs = (
     "bin/debug/inject",
     "bin/debug/sms",
     "bin/debug/inject-todo",
+    "bin/debug/inject-done",
     "bin/sink/habitrpg",
-    "bin/sink/idone-send",
     "bin/sink/sms",
     "bin/sink/pushover",
     "bin/actions/geo-sms",
@@ -73,7 +73,6 @@ my %WriteMakefileArgs = (
     "Ubic::Service::SimpleDaemon" => 0,
     "WWW::Mechanize" => 0,
     "WebService::HabitRPG" => 0,
-    "WebService::Idonethis" => "0.22",
     "WebService::Pushover" => 0,
     "WebService::RTMAgent" => "0.600",
     "ZMQ" => 0,
@@ -92,7 +91,7 @@ my %WriteMakefileArgs = (
     "Test::Most" => 0,
     "Test::Warn" => 0
   },
-  "VERSION" => "1.06",
+  "VERSION" => "1.07",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -137,7 +136,6 @@ my %FallbackPrereqs = (
   "Ubic::Service::SimpleDaemon" => 0,
   "WWW::Mechanize" => 0,
   "WebService::HabitRPG" => 0,
-  "WebService::Idonethis" => "0.22",
   "WebService::Pushover" => 0,
   "WebService::RTMAgent" => "0.600",
   "ZMQ" => 0,

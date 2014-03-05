@@ -14,13 +14,13 @@ bin/actions/geo-personallog
 bin/actions/geo-sms
 bin/actions/rtm-adder
 bin/debug/inject
+bin/debug/inject-done
 bin/debug/inject-todo
 bin/debug/notify
 bin/debug/sms
 bin/exobrain
 bin/router
 bin/sink/habitrpg
-bin/sink/idone-send
 bin/sink/pushover
 bin/sink/sms
 bin/source/beeminder-bounties
