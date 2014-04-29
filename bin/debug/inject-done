@@ -3,7 +3,7 @@ use Exobrain;
 
 # ABSTRACT: Log personal entries via Exobrain
 # PODNAME: inject-done
-our $VERSION = '1.07'; # VERSION
+our $VERSION = '1.08'; # VERSION
 
 # This code is supplied for debugging purposes. It's name may
 # change in the future. (Or you can develop it into a full app,
@@ -25,7 +25,7 @@ inject-done - Log personal entries via Exobrain
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =head1 AUTHOR
 

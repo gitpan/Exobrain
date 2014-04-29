@@ -7,6 +7,12 @@ use Carp qw(croak);
 use ZMQ;
 use ZMQ::Constants qw(ZMQ_SUB ZMQ_SUBSCRIBE ZMQ_PUB ZMQ_FORWARDER);
 
+# ABSTRACT: Central hub for the exobrain bus
+our $VERSION = '1.08'; # VERSION
+
+
+# TODO: Don't use hard-coded sockets. Seriously. Ugh.
+
 has subscriber => (is => 'ro', default => 'tcp://127.0.0.1:3546');     # Subscribers connect here
 has publisher  => (is => 'ro', default => 'tcp://127.0.0.1:3547');     # Publishers connect here
 has server     => (is => 'ro', isa => 'Bool', default => 0);
@@ -44,11 +50,17 @@ __END__
 
 =head1 NAME
 
-Exobrain::Router
+Exobrain::Router - Central hub for the exobrain bus
 
 =head1 VERSION
 
-version 1.07
+version 1.08
+
+=head1 DESCRIPTION
+
+This is the central hub for the Exobrain bus. You should probably be
+starting this with C<ubic start exobrain.core> rather than calling
+it directly.
 
 =for Pod::Coverage ZMQ_FORWARDER ZMQ_PUB ZMQ_SUB ZMQ_SUBSCRIBE
 

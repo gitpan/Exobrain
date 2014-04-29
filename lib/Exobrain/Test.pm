@@ -3,14 +3,19 @@ use strict;
 use warnings;
 
 # ABSTRACT: Establish test environment for Exobrain
+our $VERSION = '1.08'; # VERSION
 
 
-# Right now we just set a variable to look for our config files in
+# Set a variable to look for our config files in
 # the same directory as our main program.
 
 use FindBin qw($Bin);
 
 $ENV{EXOBRAIN_CONFIG} = "$Bin/.exobrainrc";
+
+# Also, go looking for extra modules there.
+
+use lib "$Bin/lib";
 
 1;
 
@@ -24,7 +29,7 @@ Exobrain::Test - Establish test environment for Exobrain
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =head1 SYNOPSIS
 

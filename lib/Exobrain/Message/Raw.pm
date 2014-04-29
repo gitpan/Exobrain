@@ -7,6 +7,10 @@ use Carp;
 
 use Moose::Util::TypeConstraints;
 
+# ABSTRACT: Raw, low-level access to Exobrain packets
+our $VERSION = '1.08'; # VERSION
+
+
 my $json = JSON::Any->new;
 
 # Summary declared early, so our role can see it.
@@ -87,11 +91,18 @@ __END__
 
 =head1 NAME
 
-Exobrain::Message::Raw
+Exobrain::Message::Raw - Raw, low-level access to Exobrain packets
 
 =head1 VERSION
 
-version 1.07
+version 1.08
+
+=head1 DESCRIPTION
+
+This class provides low level access to exobrain packets.
+You probably want to use the C<intent>, C<measure>,
+C<notify> or other methods in L<Exobrain> rather than using
+this directly.
 
 =for Pod::Coverage BUILD
 

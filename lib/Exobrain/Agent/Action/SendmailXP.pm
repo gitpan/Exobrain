@@ -3,13 +3,19 @@ use Moose;
 use Method::Signatures;
 
 with 'Exobrain::Agent::Run';
+with 'Exobrain::Agent::Depends';
 
 # ABSTRACT: Reward users on HabitRPG for sending email.
-our $VERSION = '1.07'; # VERSION
+our $VERSION = '1.08'; # VERSION
 
 use constant DEBUG => 0;
 
-method run() {
+method depends() { qw(Intent::HabitRPG Measurement::Mailbox) }
+
+# WTF exobrain, why do I need to use a (...) signature here?
+# What on earth are you being passed?
+
+method run(...) {
     my $task  = $self->config->{task} or die "No HabitRPG task";
     my $cache = $self->cache;
 
@@ -52,7 +58,7 @@ Exobrain::Agent::Action::SendmailXP - Reward users on HabitRPG for sending email
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =for Pod::Coverage DEBUG
 

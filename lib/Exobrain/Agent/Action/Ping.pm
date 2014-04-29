@@ -5,6 +5,7 @@ use Method::Signatures;
 with 'Exobrain::Agent::Run';
 
 # ABSTRACT: Automatically respond to any 'ping' tag sent to us.
+our $VERSION = '1.08'; # VERSION
 
 method run() {
     $self->exobrain->watch_loop(
@@ -26,7 +27,7 @@ Exobrain::Agent::Action::Ping - Automatically respond to any 'ping' tag sent to 
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =head1 AUTHOR
 

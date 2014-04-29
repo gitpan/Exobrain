@@ -1,8 +1,24 @@
 Revision history for Exobrain
 
+1.08      2014-04-30 00:39:57+08:00 Australia/Perth
+
+    * API: `use Exobrain` automatically enables Method::Signatures.
+    * DISTRO: HabitRPG is now packaged separately as Exobrain::HabitRPG
+    * DISTRO: Foursquare is now packaged separately as Exobrain::Foursquare
+    * API: Exobrain::Agent has better documentation and functionality.
+    * API: Measurement::Geo is now a role, not a class.
+    * API: Added a `can_run` method to Exobrain
+    * API: Exobrain::Agent::Depends allow dependencies to be delcared.
+    * TESTING: Better testing for Exobrain::Agent.
+    * TESTING: Exobrain::Test will load classes from t/lib
+    * AGENTS: Ported `bee-habit` to Exobrain::Agent::Action::SimpleBeeHabit;
+    * AGENTS: Ported `geo-personallog` to Exobrain::Agent::Action::GeoLog;
+    * AGENTS: Ported `sentbox-reward` to Exobrain::Agent::Action::SentmailXP;
+    * DOCS: Much documentation added.
+
 1.07      2014-03-04 22:46:36PST-0800 America/Los_Angeles
 
-    * DEBUG: Added 'inject-done' debugging scrip to generate
+    * DEBUG: Added 'inject-done' debugging script to generate
              Intent::PersonalLog messages.
     * DISTRO: Turned Idonethis into a separate component
               (Exobrain::Idonethis)

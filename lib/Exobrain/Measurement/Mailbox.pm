@@ -6,7 +6,7 @@ use Moose;
 use Method::Signatures;
 
 # ABSTRACT: Mailbox measurement packet
-our $VERSION = '1.07'; # VERSION
+our $VERSION = '1.08'; # VERSION
 
 # Declare that we will have a summary attribute. This is to make
 # our roles happy.
@@ -45,7 +45,7 @@ Exobrain::Measurement::Mailbox - Mailbox measurement packet
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =head1 DESCRIPTION
 

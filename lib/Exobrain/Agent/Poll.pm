@@ -4,7 +4,9 @@ use Method::Signatures;
 use Try::Tiny;
 use Exobrain::Types qw(TimeOut PosInt);
 
-# ABTRACT: Role for exobrain sources which poll a source.
+# ABSTRACT: Role for exobrain sources which poll a source.
+our $VERSION = '1.08'; # VERSION
+
 
 with 'Exobrain::Agent';
 
@@ -48,18 +50,37 @@ __END__
 
 =head1 NAME
 
-Exobrain::Agent::Poll
+Exobrain::Agent::Poll - Role for exobrain sources which poll a source.
 
 =head1 VERSION
 
-version 1.07
+version 1.08
+
+=head1 SYNOPSIS
+
+    package Exobrain::Agent::Action::Foo;
+    use Moose;
+
+    with 'Exobrain::Agent::Poll';
+
+    sub poll {
+        # This method will be called on a regular basis.
+    }
+
+=head1 DESCRIPTION
+
+This role arranges for the consumer's C<poll> method to
+be called on a periodic basis. It also includes the
+functionality of L<Exobrain::Agent>.
 
 =head1 METHODS
 
 =head2 start
 
-Automatically called when a C<Source> class is started, this 
-starts the actual agent (wrapping C<poll>), and never returns.
+This is a wrapper around the actual agent, which arranges to
+call its C<poll> method every C<$self->frequency> seconds.
+
+It never returns.
 
 =head1 AUTHOR
 

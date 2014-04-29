@@ -6,6 +6,10 @@ use warnings;
 
 use parent qw(CHI);
 
+# ABSTRACT: Cache class for Exobrain
+our $VERSION = '1.08'; # VERSION
+
+
 __PACKAGE__->config({
     defaults => {
         driver   => 'File',
@@ -21,11 +25,22 @@ __END__
 
 =head1 NAME
 
-Exobrain::Cache
+Exobrain::Cache - Cache class for Exobrain
 
 =head1 VERSION
 
-version 1.07
+version 1.08
+
+=head1 SYNOPSIS
+
+    my $cache = Exobrain->cache;
+
+=head1 DESCRIPTION
+
+This provides a ready-made cache for any code using the Exobrain framework.
+
+This directly inherits from the fantastic L<CHI> system. See its documentation
+for more details.
 
 =head1 AUTHOR
 

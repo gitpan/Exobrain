@@ -1,12 +1,10 @@
 #!/usr/bin/perl
 use 5.010;
-use strict;
-use warnings;
-use autodie;
 use Exobrain;
 
 # PODNAME: sms
 # ABSTRACT: Send an exobrain sms intent from the cmdline
+our $VERSION = '1.08'; # VERSION
 
 my $number  = shift;
 my $message = "@ARGV";
@@ -18,7 +16,7 @@ my $exobrain = Exobrain->new;
 $exobrain->intent('SMS',
     to   => $number,
     text => $message,
-)->send_msg;
+);
 
 __END__
 
@@ -30,7 +28,7 @@ sms - Send an exobrain sms intent from the cmdline
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =head1 AUTHOR
 

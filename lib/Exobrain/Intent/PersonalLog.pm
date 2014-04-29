@@ -5,6 +5,9 @@ use v5.10.0;
 use Moose;
 use Method::Signatures;
 
+# ABSTRACT: Signal an intent to record a personal log event
+our $VERSION = '1.08'; # VERSION
+
 
 method summary() { return $self->message; }
 
@@ -20,11 +23,11 @@ __END__
 
 =head1 NAME
 
-Exobrain::Intent::PersonalLog
+Exobrain::Intent::PersonalLog - Signal an intent to record a personal log event
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =head1 SYNOPSIS
 

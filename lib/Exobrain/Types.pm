@@ -5,6 +5,10 @@ use warnings;
 
 use JSON::Any;
 
+# ABSTRACT: Type system for Exobrain
+our $VERSION = '1.08'; # VERSION
+
+
 my $json = JSON::Any->new( allow_blessed => 1 );
 
 use MooseX::Types -declare => [qw(
@@ -81,11 +85,23 @@ __END__
 
 =head1 NAME
 
-Exobrain::Types
+Exobrain::Types - Type system for Exobrain
 
 =head1 VERSION
 
-version 1.07
+version 1.08
+
+=head1 SYNOPSIS
+
+    use Exobrain::Types qw(SmsStr PhoneNum);
+
+=head1 DESCRIPTION
+
+This provides a central point for accessing the type-system
+used by Exobrain. At this time you'll need to view this
+module's source to see all the types available.
+
+Documentation patches are very, very welcome.
 
 =head1 AUTHOR
 

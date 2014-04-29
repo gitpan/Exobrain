@@ -8,7 +8,7 @@ with 'Exobrain::Agent::Run';
 use constant DEBUG => 0;
 
 # ABSTRACT: Watch inbox and send low-water marks to beeminder
-our $VERSION = '1.07'; # VERSION
+our $VERSION = '1.08'; # VERSION
 
 
 method run() {
@@ -87,7 +87,7 @@ Exobrain::Agent::Action::BeeInbox - Watch inbox and send low-water marks to beem
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =head1 SYNOPSIS
 

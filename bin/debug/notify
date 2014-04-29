@@ -7,6 +7,7 @@ use Exobrain;
 
 # PODNAME: notify
 # ABSTRACT: Send an exobrain notify intent from the cmdline
+our $VERSION = '1.08'; # VERSION
 
 @ARGV or die "Usage: $0 message\n";
 
@@ -24,7 +25,7 @@ notify - Send an exobrain notify intent from the cmdline
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =head1 AUTHOR
 

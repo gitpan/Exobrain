@@ -4,13 +4,14 @@ author:
   - 'Paul Fenwick <pjf@cpan.org>'
 build_requires:
   File::Spec: 0
+  Test::Deep: 0
   Test::More: 0
   Test::Most: 0
   Test::Warn: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 5.013, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Dist::Zilla version 5.015, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -49,7 +50,6 @@ requires:
   Ubic::Multiservice::Simple: 0
   Ubic::Service::SimpleDaemon: 0
   WWW::Mechanize: 0
-  WebService::HabitRPG: 0
   WebService::Pushover: 0
   WebService::RTMAgent: 0.600
   ZMQ: 0
@@ -57,8 +57,9 @@ requires:
   autodie: 0
   constant: 0
   feature: 0
+  lib: 0
   parent: 0
-  perl: v5.10.0
+  perl: 5.010
   strict: 0
   utf8::all: 0
   warnings: 0
@@ -66,4 +67,4 @@ resources:
   bugtracker: https://github.com/pjf/exobrain/issues
   homepage: https://github.com/pjf/exobrain
   repository: git://github.com/pjf/exobrain
-version: 1.07
+version: 1.08

@@ -14,6 +14,9 @@ use Data::Dumper;
 
 use Exobrain::Types qw(JSON);
 
+# ABSTRACT: Top-level role for all exobrain messages
+our $VERSION = '1.08'; # VERSION
+
 
 has timestamp => ( is => 'ro', isa => 'Int', default => sub { time() } );
 has exobrain  => ( is => 'rw', isa => 'Exobrain');
@@ -199,15 +202,16 @@ __END__
 
 =head1 NAME
 
-Exobrain::Message
+Exobrain::Message - Top-level role for all exobrain messages
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =head1 DESCRIPTION
 
-Top-level I<role> for all exobrain messages.
+This is the base role upon which upon which all Exobrain messages
+adhere to.
 
 =head1 METHODS
 

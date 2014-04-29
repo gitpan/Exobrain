@@ -4,6 +4,7 @@ use Method::Signatures;
 use Try::Tiny;
 
 # ABSTRACT: Role for agents which run 'continously'
+our $VERSION = '1.08'; # VERSION
 
 with 'Exobrain::Agent';
 
@@ -35,7 +36,7 @@ Exobrain::Agent::Run - Role for agents which run 'continously'
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =head1 METHODS
 

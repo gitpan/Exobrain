@@ -4,6 +4,10 @@ use Moose::Role;
 
 with 'Exobrain::Message';
 
+# ABSTRACT: Role for Exobrain intent packets
+our $VERSION = '1.08'; # VERSION
+
+
 1;
 
 __END__
@@ -12,11 +16,16 @@ __END__
 
 =head1 NAME
 
-Exobrain::Intent
+Exobrain::Intent - Role for Exobrain intent packets
 
 =head1 VERSION
 
-version 1.07
+version 1.08
+
+=head1 DESCRIPTION
+
+Currently this is a very thin wrapper over L<Exobrain::Message>, but
+may contain more functionality in the future.
 
 =head1 AUTHOR
 

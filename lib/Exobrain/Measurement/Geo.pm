@@ -1,15 +1,11 @@
 package Exobrain::Measurement::Geo;
-
-use 5.010;
-use autodie;
-use Moose;
+use Moose::Role;
 use Method::Signatures;
-
 use Exobrain::Measurement::Geo::POI;
 use Exobrain::Types qw(POI);
 
-# ABSTRACT: Geo measurement packet
-our $VERSION = '1.07'; # VERSION
+# ABSTRACT: Geo measurement packet for Exobrain
+our $VERSION = '1.08'; # VERSION
 
 # Declare that we will have a summary attribute. This is to make
 # our roles happy.
@@ -46,7 +42,9 @@ method _build_summary() {
 
 no warnings qw(redefine);
 
-method BUILD(...) {
+sub BUILD { };
+
+after BUILD => method (...) {
 
     # Fill our POI source if required
 
@@ -54,7 +52,7 @@ method BUILD(...) {
         $self->poi->source($self->source);
     }
 
-}
+};
 
 1;
 
@@ -64,11 +62,11 @@ __END__
 
 =head1 NAME
 
-Exobrain::Measurement::Geo - Geo measurement packet
+Exobrain::Measurement::Geo - Geo measurement packet for Exobrain
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =head1 DESCRIPTION
 
@@ -76,26 +74,10 @@ A standard form of measuring a geolocation, which may be
 from Foursquare, brightkite, twitter, facebook, or anything
 else that lets us snoop on poeple.
 
-Eg:
+This is a I<role>, and must be consumed by a class that implments
+it. For one example, see L<Exobrain::Measurement::Geo::Foursquare>
 
-    $exobrain->measure('Geo',
-        source => 'Foursquare',
-        user    => 'pjf',
-        user_name => 'Paul Fenwick',
-        is_me   => 1,
-        poi     => {
-            id   => 'abc01234ff',
-            name => 'Some place',
-            lat  => $latitude,  # optional
-            long => $longitude, # optional
-        },
-        message => 'Drinking a coffee',
-        lat  => $latitude,  # optional
-        long => $longitude, # optional
-    );
-
-In the future C<user> and C<user_name> may be combined into
-a user object.
+=for Pod::Coverage summary
 
 =head1 AUTHOR
 

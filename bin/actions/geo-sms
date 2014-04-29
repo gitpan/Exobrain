@@ -11,6 +11,7 @@ use constant DEBUG => 1;
 
 # ABSTRACT: Text people when you're in their area.
 # PODNAME: geo-sms
+our $VERSION = '1.08'; # VERSION
 
 my $exobrain = Exobrain->new;
 
@@ -69,7 +70,7 @@ geo-sms - Text people when you're in their area.
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =head1 AUTHOR
 

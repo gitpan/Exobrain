@@ -6,6 +6,7 @@ use autodie;
 
 # PODNAME: router
 # ABSTRACT: Exobrain router. This *must* be running for exobrain to work
+our $VERSION = '1.08'; # VERSION
 
 use Exobrain::Router;
 
@@ -25,7 +26,7 @@ router - Exobrain router. This *must* be running for exobrain to work
 
 =head1 VERSION
 
-version 1.07
+version 1.08
 
 =head1 AUTHOR
 
